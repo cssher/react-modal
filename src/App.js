@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ModalPortal from "./ModalPortal";
+import { useState } from "react";
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button
+        className="open_btn"
+        onClick={() => {
+          setIsOpen(true);
+        }}
+      >
+        OPEN MODAL
+      </button>
+      <ModalPortal
+        open={isOpen}
+        closeModal={() => {
+          setIsOpen(false);
+        }}
+      />
+
+      <h1>Background Content: Demo modal using React Hooks and Portals.</h1>
     </div>
   );
 }
